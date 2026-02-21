@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Kumar | Lead Flutter Developer & Full Stack Engineer</title>
+    
+    <!-- Scripts & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        indigo: { 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
+                        slate: { 950: '#000000' },
+                        flutter: '#02539a',
+                        brutalYellow: '#fbbf24',
+                        brutalGreen: '#22c55e'
+                    },
+                    boxShadow: {
+                        'brutal': '6px 6px 0px 0px #000000',
+                        'brutal-lg': '12px 12px 0px 0px #000000',
+                        'brutal-dark': '6px 6px 0px 0px #ffffff',
+                        'brutal-lg-dark': '12px 12px 0px 0px #ffffff',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Neo-Brutalism Utility Classes */
+        .neo-card { @apply border-4 border-black dark:border-white transition-all duration-300 bg-white dark:bg-zinc-900; }
+        .neo-btn { @apply border-4 border-black dark:border-white font-black uppercase tracking-widest transition-all duration-200 active:translate-x-1 active:translate-y-1 active:shadow-none; }
+        .text-stroke { -webkit-text-stroke: 1px currentColor; color: transparent; }
+        
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #fff; border: 3px solid #000; }
+
+        html { scroll-behavior: smooth; }
+        body { background-color: #f8fafc; }
+        .dark body { background-color: #000000; }
+
+        .hover-lift:hover { transform: translate(-8px, -8px); box-shadow: 16px 16px 0px 0px rgba(0,0,0,1); }
+        .dark .hover-lift:hover { box-shadow: 16px 16px 0px 0px rgba(255,255,255,1); }
+        
+        .marquee-container { overflow: hidden; white-space: nowrap; }
+    </style>
+</head>
+
+<body class="text-slate-950 dark:text-zinc-50 font-sans">
+
+    <!-- Header / Nav -->
+    <nav class="fixed top-0 w-full z-[100] border-b-4 border-black dark:border-white bg-white/90 dark:bg-black/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-indigo-600 border-4 border-black dark:border-white flex items-center justify-center font-black text-white shadow-brutal dark:shadow-brutal-dark">AK</div>
+                <div class="hidden sm:block">
+                    <p class="font-heading font-black text-xl uppercase tracking-tighter">Abhishek Kumar</p>
+                    <p class="text-[9px] font-bold uppercase tracking-[0.3em] text-indigo-600">Mobile Systems Engineer</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <div class="hidden lg:flex gap-8 font-black text-[10px] uppercase tracking-widest">
+                    <a href="#about" class="hover:underline decoration-4 underline-offset-8">Bio</a>
+                    <a href="#skills" class="hover:underline decoration-4 underline-offset-8">Stack</a>
+                    <a href="#experience" class="hover:underline decoration-4 underline-offset-8">Journey</a>
+                    <a href="#projects" class="hover:underline decoration-4 underline-offset-8">Work</a>
+                </div>
+                <button onclick="toggleTheme()" class="neo-card p-2 bg-brutalYellow shadow-brutal dark:bg-indigo-600 neo-btn">
+                    <i data-lucide="sun-moon" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Moving Marquee -->
+    <div class="pt-24 pb-4 bg-black dark:bg-white text-white dark:text-black marquee-container border-b-4 border-black dark:border-white">
+        <div class="flex animate-marquee font-black uppercase text-sm tracking-[0.5em] py-2">
+            <span class="mx-8">Flutter Specialist</span> • <span class="mx-8">WebRTC Audio/Video</span> • <span class="mx-8">Full Stack Developer</span> • <span class="mx-8">Team Leadership</span> • <span class="mx-8">Real-time Systems</span> • <span class="mx-8">UI/UX Enthusiast</span> •
+            <span class="mx-8">Flutter Specialist</span> • <span class="mx-8">WebRTC Audio/Video</span> • <span class="mx-8">Full Stack Developer</span> • <span class="mx-8">Team Leadership</span> • <span class="mx-8">Real-time Systems</span> • <span class="mx-8">UI/UX Enthusiast</span> •
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 py-20">
+
+        <!-- Hero Section -->
+        <section id="about" class="grid lg:grid-cols-12 gap-16 items-start mb-48">
+            <div class="lg:col-span-8">
+                <div class="flex flex-wrap gap-4 mb-8">
+                    <div class="neo-card px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-[10px] font-black uppercase flex items-center gap-2">
+                        <span class="w-2 h-2 bg-indigo-600 rounded-full animate-pulse"></span> Available for Projects
+                    </div>
+                    <div class="neo-card px-4 py-2 bg-zinc-100 dark:bg-zinc-800 text-[10px] font-black uppercase flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-3 h-3"></i> Bangalore, India
+                    </div>
+                </div>
+
+                <h1 class="font-heading text-6xl md:text-8xl xl:text-[110px] font-black leading-[0.85] mb-12 uppercase italic">
+                    Engineering <br> <span class="text-indigo-600">Cross-Platform</span> <br> 
+                    <span class="text-stroke">Solutions</span>
+                </h1>
+
+                <p class="text-xl md:text-3xl font-medium max-w-4xl leading-snug mb-12 opacity-95 border-l-[12px] border-indigo-600 pl-8">
+                    Flutter mobile developer with hands-on experience building and deploying cross-platform applications. Proficient in <span class="font-black text-indigo-600">GetX, Provider, REST APIs, Firebase, WebRTC, Socket.io, and Node.js.</span>
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 mb-16">
+                    <div class="neo-card p-6 flex-1 shadow-brutal dark:shadow-brutal-dark hover:bg-zinc-50 dark:hover:bg-zinc-800">
+                        <h3 class="text-4xl font-black italic">02+</h3>
+                        <p class="text-[10px] font-black uppercase tracking-widest opacity-60 mt-1">Years Production Experience</p>
+                    </div>
+                    <div class="neo-card p-6 flex-1 shadow-brutal dark:shadow-brutal-dark hover:bg-zinc-50 dark:hover:bg-zinc-800">
+                        <h3 class="text-4xl font-black italic">05+</h3>
+                        <p class="text-[10px] font-black uppercase tracking-widest opacity-60 mt-1">Cross-Platform Apps Launched</p>
+                    </div>
+                    <div class="neo-card p-6 flex-1 shadow-brutal dark:shadow-brutal-dark hover:bg-zinc-50 dark:hover:bg-zinc-800">
+                        <h3 class="text-4xl font-black italic">05+</h3>
+                        <p class="text-[10px] font-black uppercase tracking-widest opacity-60 mt-1">Engineers Managed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Sidebar -->
+            <div class="lg:col-span-4 lg:sticky lg:top-32">
+                <div class="neo-card p-8 shadow-brutal-lg dark:shadow-brutal-lg-dark bg-white dark:bg-zinc-900">
+                    <div class="aspect-square bg-indigo-600 border-4 border-black dark:border-white mb-8 relative overflow-hidden flex items-center justify-center">
+                        <i data-lucide="user" class="w-32 h-32 text-white"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-[10px] font-black uppercase opacity-50 mb-1">Electronic Mail</p>
+                            <a href="mailto:abhisheksingh9709844475@gmail.com" class="font-bold text-sm hover:text-indigo-600 transition-colors">abhisheksingh9709844475@gmail.com</a>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase opacity-50 mb-1">Direct Line</p>
+                            <p class="font-bold text-sm">+91-9304514787</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="https://github.com/codewithabhi001" target="_blank" class="neo-card p-3 flex flex-col items-center justify-center gap-2 bg-zinc-100 dark:bg-black shadow-brutal hover:shadow-none btn-press">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                                <span class="text-[8px] font-black uppercase">GitHub</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/abhishek-kumar-76b9a924b/" target="_blank" class="neo-card p-3 flex flex-col items-center justify-center gap-2 bg-indigo-600 text-white shadow-brutal hover:shadow-none btn-press">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                                <span class="text-[8px] font-black uppercase">LinkedIn</span>
+                            </a>
+                        </div>
+                        <a href="mailto:abhisheksingh9709844475@gmail.com" class="w-full neo-btn py-4 bg-brutalGreen text-white shadow-brutal flex items-center justify-center gap-4 hover:bg-green-600">
+                            Hire Abhishek <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Detailed Tech Skills -->
+        <section id="skills" class="mb-48">
+            <h2 class="font-heading text-5xl md:text-7xl font-black uppercase mb-16 flex items-center gap-6">
+                <span class="text-indigo-600">/</span> Technical Matrix
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Programming -->
+                <div class="neo-card p-8 hover-lift shadow-brutal dark:shadow-brutal-dark">
+                    <div class="w-12 h-12 bg-brutalYellow border-4 border-black dark:border-white mb-6 flex items-center justify-center">
+                        <i data-lucide="code-2" class="w-6 h-6 text-black"></i>
+                    </div>
+                    <h3 class="text-xl font-black uppercase mb-6">Programming</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> DART</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> JAVASCRIPT</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> JAVA</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> C / C++</li>
+                    </ul>
+                </div>
+
+                <!-- Mobile Development -->
+                <div class="neo-card p-8 hover-lift shadow-brutal dark:shadow-brutal-dark">
+                    <div class="w-12 h-12 bg-indigo-600 border-4 border-black dark:border-white mb-6 flex items-center justify-center">
+                        <i data-lucide="smartphone" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-black uppercase mb-6">Mobile Core</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-white"></span> FLUTTER (ALL VERSIONS)</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-white"></span> GETX & BLoC</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-white"></span> WEBRTC (A/V)</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-white"></span> SOCKET.IO REALTIME</li>
+                    </ul>
+                </div>
+
+                <!-- Backend / DevOps -->
+                <div class="neo-card p-8 hover-lift shadow-brutal dark:shadow-brutal-dark">
+                    <div class="w-12 h-12 bg-brutalGreen border-4 border-black dark:border-white mb-6 flex items-center justify-center">
+                        <i data-lucide="server" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-black uppercase mb-6">Full Stack</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> NODE.JS / EXPRESS</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> MONGODB / FIREBASE</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> VERCEL / RENDER</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> NGINX SERVER</li>
+                    </ul>
+                </div>
+
+                <!-- Others -->
+                <div class="neo-card p-8 hover-lift shadow-brutal dark:shadow-brutal-dark">
+                    <div class="w-12 h-12 bg-zinc-800 border-4 border-black dark:border-white mb-6 flex items-center justify-center">
+                        <i data-lucide="wrench" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-black uppercase mb-6">Tools & More</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> GIT / GITHUB</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> POSTMAN / API DOCS</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> UI DESIGN (FIGMA)</li>
+                        <li class="flex items-center gap-3 font-bold text-xs"><span class="w-2 h-2 bg-indigo-600"></span> PROJECT EXECUTION</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience - Long Form -->
+        <section id="experience" class="mb-48">
+            <h2 class="font-heading text-5xl md:text-7xl font-black uppercase mb-16 flex items-center gap-6">
+                <span class="text-indigo-600">/</span> Career Timeline
+            </h2>
+
+            <div class="space-y-16">
+                <!-- JPL IT SOLUTION -->
+                <div class="relative pl-12 border-l-8 border-black dark:border-white">
+                    <div class="absolute -left-[24px] top-0 w-10 h-10 bg-indigo-600 border-4 border-black dark:border-white shadow-brutal flex items-center justify-center">
+                        <i data-lucide="briefcase" class="w-5 h-5 text-white"></i>
+                    </div>
+                    
+                    <div class="neo-card p-10 shadow-brutal-lg dark:shadow-brutal-lg-dark">
+                        <div class="flex flex-col md:flex-row justify-between mb-8 border-b-4 border-black dark:border-white pb-6">
+                            <div>
+                                <h3 class="text-4xl font-black uppercase italic tracking-tighter">Flutter Developer / Team Lead</h3>
+                                <p class="text-xl font-black text-indigo-600 uppercase mt-2">JPL IT Solution, Bangalore</p>
+                            </div>
+                            <div class="mt-4 md:mt-0">
+                                <span class="neo-card px-6 py-2 bg-black text-white dark:bg-white dark:text-black font-black uppercase text-xs">Currently Working</span>
+                            </div>
+                        </div>
+
+                        <div class="grid lg:grid-cols-2 gap-12">
+                            <div class="space-y-6">
+                                <h4 class="font-black uppercase text-sm underline decoration-4 decoration-indigo-600">Leadership & Management</h4>
+                                <ul class="space-y-4 text-sm font-bold opacity-80 leading-relaxed italic">
+                                    <li class="flex gap-4"><i data-lucide="check-circle" class="w-5 h-5 shrink-0 text-indigo-600"></i> Leading a team of developers and managing full project lifecycle.</li>
+                                    <li class="flex gap-4"><i data-lucide="check-circle" class="w-5 h-5 shrink-0 text-indigo-600"></i> Overseeing project planning, sprint management, task assignment, and delivery.</li>
+                                    <li class="flex gap-4"><i data-lucide="check-circle" class="w-5 h-5 shrink-0 text-indigo-600"></i> Conducting code reviews and mentoring junior developers for architectural excellence.</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-6">
+                                <h4 class="font-black uppercase text-sm underline decoration-4 decoration-indigo-600">Product Development</h4>
+                                <ul class="space-y-4 text-sm font-bold opacity-80 leading-relaxed italic">
+                                    <li class="flex gap-4"><i data-lucide="zap" class="w-5 h-5 shrink-0 text-brutalYellow"></i> Leading development of ILB Mart, a complex hyperlocal grocery marketplace app.</li>
+                                    <li class="flex gap-4"><i data-lucide="zap" class="w-5 h-5 shrink-0 text-brutalYellow"></i> Managing vendor systems, cart checkout, order flow, and real-time tracking modules.</li>
+                                    <li class="flex gap-4"><i data-lucide="zap" class="w-5 h-5 shrink-0 text-brutalYellow"></i> Handling critical API integrations, Firebase modules, and secure payment gateways.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BIZTECHNOSYS -->
+                <div class="relative pl-12 border-l-8 border-black dark:border-white opacity-80 hover:opacity-100 transition-opacity">
+                    <div class="absolute -left-[24px] top-0 w-10 h-10 bg-zinc-300 border-4 border-black dark:border-white shadow-brutal flex items-center justify-center">
+                        <i data-lucide="terminal" class="w-5 h-5 text-black"></i>
+                    </div>
+                    
+                    <div class="neo-card p-10 shadow-brutal dark:shadow-brutal-dark">
+                        <div class="flex flex-col md:flex-row justify-between mb-8">
+                            <div>
+                                <h3 class="text-3xl font-black uppercase italic tracking-tighter">Software Developer Intern</h3>
+                                <p class="text-lg font-black text-indigo-600 uppercase">Biztechnosys Infotech, Bangalore</p>
+                            </div>
+                            <span class="font-black uppercase text-xs opacity-50">6 Months Tenure</span>
+                        </div>
+                        <p class="text-sm font-bold leading-relaxed max-w-4xl mb-6">
+                            Architected multiple commercial Flutter apps with clean, scalable architecture. Specialized in state management refactoring and backend optimization.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="neo-card px-3 py-1 bg-zinc-100 dark:bg-black text-[10px] font-black uppercase">Provider</span>
+                            <span class="neo-card px-3 py-1 bg-zinc-100 dark:bg-black text-[10px] font-black uppercase">GetX</span>
+                            <span class="neo-card px-3 py-1 bg-zinc-100 dark:bg-black text-[10px] font-black uppercase">Firebase Auth</span>
+                            <span class="neo-card px-3 py-1 bg-zinc-100 dark:bg-black text-[10px] font-black uppercase">UI Performance (40% Boost)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Masterpieces - GRID -->
+        <section id="projects" class="mb-48">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <h2 class="font-heading text-5xl md:text-7xl font-black uppercase flex items-center gap-6">
+                    <span class="text-indigo-600">/</span> Engineering Lab
+                </h2>
+                <p class="text-sm font-bold uppercase tracking-widest opacity-60 max-w-xs text-right italic">A collection of production-grade systems and real-time experiments.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Project: ILB Mart -->
+                <div class="neo-card flex flex-col group overflow-hidden shadow-brutal-lg dark:shadow-brutal-lg-dark hover-lift">
+                    <div class="h-48 bg-brutalYellow flex items-center justify-center border-b-4 border-black relative overflow-hidden">
+                        <i data-lucide="shopping-bag" class="w-24 h-24 text-black group-hover:scale-125 transition-transform duration-500"></i>
+                        <div class="absolute bottom-4 right-4 bg-black text-white px-3 py-1 text-[10px] font-black uppercase">Flagship</div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h4 class="text-3xl font-black uppercase italic mb-4">ILB Mart</h4>
+                        <p class="text-xs font-bold leading-relaxed mb-6 opacity-80 uppercase tracking-tighter italic">Hyperlocal grocery delivery platform like Blinkit with real-time order updates, vendor onboarding, inventory, and delivery partner flow.</p>
+                        <ul class="mb-8 space-y-2 text-[10px] font-black uppercase opacity-60">
+                            <li>• Tech: Flutter, Firebase, REST APIs</li>
+                            <li>• Leading Architecture as Team Lead</li>
+                            <li>• Full-stack vendor ecosystem</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <button class="w-full neo-btn py-3 bg-black text-white text-[10px] cursor-not-allowed">Enterprise Restricted</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: Talksy -->
+                <div class="neo-card flex flex-col group overflow-hidden shadow-brutal-lg dark:shadow-brutal-lg-dark hover-lift">
+                    <div class="h-48 bg-indigo-600 flex items-center justify-center border-b-4 border-black relative overflow-hidden">
+                        <i data-lucide="video" class="w-24 h-24 text-white group-hover:scale-125 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h4 class="text-3xl font-black uppercase italic mb-4">Talksy</h4>
+                        <p class="text-xs font-bold leading-relaxed mb-6 opacity-80 uppercase tracking-tighter italic">Real-time audio/video calling + chat engine. Features call ringing, online/offline presence, and real-time typing indicators.</p>
+                        <ul class="mb-8 space-y-2 text-[10px] font-black uppercase opacity-60">
+                            <li>• Tech: WebRTC, Node.js, Socket.io</li>
+                            <li>• Peer-to-peer low latency sync</li>
+                            <li>• Secure Socket handshakes</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <a href="https://github.com/codewithabhi001" class="w-full neo-btn py-3 bg-white text-black text-center block text-[10px]">Open Source Engine</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: WheelBoard -->
+                <div class="neo-card flex flex-col group overflow-hidden shadow-brutal-lg dark:shadow-brutal-lg-dark hover-lift">
+                    <div class="h-48 bg-zinc-900 flex items-center justify-center border-b-4 border-black relative overflow-hidden">
+                        <i data-lucide="truck" class="w-24 h-24 text-white group-hover:scale-125 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <h4 class="text-3xl font-black uppercase italic mb-4">WheelBoard</h4>
+                        <p class="text-xs font-bold leading-relaxed mb-6 opacity-80 uppercase tracking-tighter italic">Truck driver logistics platform. Managing trip lifecycles, load assignments, and real-time transit updates via sockets.</p>
+                        <ul class="mb-8 space-y-2 text-[10px] font-black uppercase opacity-60">
+                            <li>• Tech: Flutter, Node.js, Sockets</li>
+                            <li>• Complex Trip State Logic</li>
+                            <li>• Real-time Driver Mapping</li>
+                        </ul>
+                        <div class="mt-auto flex gap-4">
+                            <a href="#" class="flex-1 neo-btn py-3 bg-white text-black text-center text-[10px]">Case Study</a>
+                            <a href="#" class="p-3 neo-card bg-black text-white"><i data-lucide="github" class="w-4 h-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Projects List -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="neo-card p-6 flex items-start gap-6 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors">
+                    <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center border-4 border-black shrink-0 font-black text-2xl italic">ME</div>
+                    <div>
+                        <h4 class="font-black uppercase text-lg mb-1 italic">MaidExpress</h4>
+                        <p class="text-[10px] font-bold opacity-70 mb-2 uppercase tracking-tighter">Dual-side onboarding, GPS tracking, job assignment, service history. Built with Firebase.</p>
+                        <span class="text-[8px] font-black uppercase bg-black text-white px-2 py-1">Service & Logistics</span>
+                    </div>
+                </div>
+                <div class="neo-card p-6 flex items-start gap-6 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors">
+                    <div class="w-16 h-16 bg-brutalGreen flex items-center justify-center border-4 border-black shrink-0 font-black text-2xl italic text-white">NT</div>
+                    <div>
+                        <h4 class="font-black uppercase text-lg mb-1 italic">NationalTextile</h4>
+                        <p class="text-[10px] font-bold opacity-70 mb-2 uppercase tracking-tighter">Fabric selling platform with catalog, pricing, inquiries, and secure orders. Firebase Integrated.</p>
+                        <span class="text-[8px] font-black uppercase bg-black text-white px-2 py-1">E-Commerce</span>
+                    </div>
+                </div>
+                <div class="neo-card p-6 flex items-start gap-6 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors">
+                    <div class="w-16 h-16 bg-brutalYellow flex items-center justify-center border-4 border-black shrink-0 font-black text-2xl italic text-black">MU</div>
+                    <div>
+                        <h4 class="font-black uppercase text-lg mb-1 italic">Musify: Music Player</h4>
+                        <p class="text-[10px] font-bold opacity-70 mb-2 uppercase tracking-tighter">Offline music player with dynamic themes; optimized UI rebuilds by 35% using GetX.</p>
+                        <span class="text-[8px] font-black uppercase bg-black text-white px-2 py-1">Utility & Optimization</span>
+                    </div>
+                </div>
+                <div class="neo-card p-6 flex items-start gap-6 hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors">
+                    <div class="w-16 h-16 bg-indigo-600 flex items-center justify-center border-4 border-black shrink-0 font-black text-2xl italic text-white">LR</div>
+                    <div>
+                        <h4 class="font-black uppercase text-lg mb-1 italic">LIVE Result System</h4>
+                        <p class="text-[10px] font-bold opacity-70 mb-2 uppercase tracking-tighter">Real-time match result system using React.js, serving over 200+ active users simultaneously.</p>
+                        <span class="text-[8px] font-black uppercase bg-black text-white px-2 py-1">Full Stack Web</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mini Project Badges Marquee -->
+            <div class="mt-12 flex flex-wrap justify-center gap-4">
+                <span class="neo-card px-4 py-2 bg-zinc-100 dark:bg-black font-black uppercase text-[10px] italic">TracknPlay</span>
+                <span class="neo-card px-4 py-2 bg-zinc-100 dark:bg-black font-black uppercase text-[10px] italic">PG Management</span>
+                <span class="neo-card px-4 py-2 bg-zinc-100 dark:bg-black font-black uppercase text-[10px] italic">Commercial Logistics Dash</span>
+                <span class="neo-card px-4 py-2 bg-zinc-100 dark:bg-black font-black uppercase text-[10px] italic">Fabric Catalog System</span>
+            </div>
+        </section>
+
+        <!-- Education & Academic Records -->
+        <section class="mb-48 grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="font-heading text-5xl font-black uppercase mb-12 flex items-center gap-6 italic">
+                    <span class="text-indigo-600">/</span> Academic History
+                </h2>
+                <div class="space-y-8">
+                    <div class="neo-card p-8 shadow-brutal hover:shadow-none transition-all">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-2xl font-black uppercase">MCA</h4>
+                            <span class="bg-indigo-600 text-white px-3 py-1 text-[10px] font-black uppercase neo-card shadow-brutal-sm">8.3 CGPA</span>
+                        </div>
+                        <p class="font-black uppercase text-xs tracking-widest text-indigo-600 mb-2 italic">Dayananda Sagar College of Engineering, Bangalore</p>
+                        <p class="text-[10px] font-bold opacity-50 uppercase">Master of Computer Applications | 2022 — 2024</p>
+                    </div>
+                    <div class="neo-card p-8 shadow-brutal hover:shadow-none transition-all">
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-2xl font-black uppercase">M.Com</h4>
+                            <span class="bg-indigo-600 text-white px-3 py-1 text-[10px] font-black uppercase neo-card shadow-brutal-sm">8.5 CGPA</span>
+                        </div>
+                        <p class="font-black uppercase text-xs tracking-widest text-indigo-600 mb-2 italic">Ranchi University, Jharkhand</p>
+                        <p class="text-[10px] font-bold opacity-50 uppercase">Master of Commerce | 2020 — 2022</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col justify-center">
+                <div class="neo-card p-12 bg-indigo-600 text-white shadow-brutal-lg dark:shadow-brutal-lg-dark relative overflow-hidden group">
+                    <!-- Brutalist Decorative Icon -->
+                    <i data-lucide="zap" class="absolute -top-10 -right-10 w-48 h-48 opacity-10 group-hover:rotate-12 transition-transform duration-700"></i>
+                    
+                    <h3 class="font-heading text-5xl font-black uppercase mb-8 italic italic leading-none">Ready to <br> Scale your <br> Mobile Product?</h3>
+                    <p class="text-sm font-bold opacity-80 mb-10 italic uppercase tracking-tighter">Available for team leadership roles, complex flutter architectures, and high-concurrency systems development.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="mailto:abhisheksingh9709844475@gmail.com" class="neo-card px-8 py-4 bg-white text-black font-black uppercase text-xs tracking-widest shadow-brutal hover:shadow-none btn-press flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4"></i> Initiate Handshake
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Extra Meta Info -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-48">
+            <div class="neo-card p-8 bg-zinc-900 text-white">
+                <h4 class="font-black uppercase text-xs tracking-[0.2em] mb-6 text-indigo-400">Languages Spoken</h4>
+                <div class="flex gap-4 font-bold text-sm italic">
+                    <span class="underline decoration-brutalYellow decoration-4">English</span>
+                    <span class="underline decoration-brutalYellow decoration-4">Hindi</span>
+                </div>
+            </div>
+            <div class="neo-card p-8 md:col-span-2">
+                <h4 class="font-black uppercase text-xs tracking-[0.2em] mb-6 text-indigo-600">Interests & Vibes</h4>
+                <div class="flex flex-wrap gap-6 font-bold text-sm italic opacity-80 uppercase tracking-tighter">
+                    <span>• UI Development</span>
+                    <span>• Real-time Systems Architecture</span>
+                    <span>• Mobile Gaming Apps</span>
+                    <span>• Cross-Platform Performance Hacking</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Detailed Footer -->
+    <footer class="border-t-[8px] border-black dark:border-white py-20 px-6 bg-white dark:bg-black">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+            <div class="max-w-md">
+                <p class="font-heading font-black uppercase tracking-tighter text-4xl italic mb-4">Abhishek Kumar</p>
+                <p class="text-sm font-bold opacity-60 uppercase tracking-widest leading-relaxed">
+                    Building robust, real-time, and scalable mobile ecosystems for global industries.
+                </p>
+                <div class="flex gap-6 mt-8">
+                    <a href="#" class="p-3 neo-card bg-zinc-100 dark:bg-black shadow-brutal hover:shadow-none btn-press"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <a href="#" class="p-3 neo-card bg-zinc-100 dark:bg-black shadow-brutal hover:shadow-none btn-press"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="p-3 neo-card bg-zinc-100 dark:bg-black shadow-brutal hover:shadow-none btn-press"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-16 font-black uppercase text-[10px] tracking-widest">
+                <div class="flex flex-col gap-4">
+                    <p class="opacity-30 mb-2">Navigation</p>
+                    <a href="#about" class="hover:text-indigo-600">Bio</a>
+                    <a href="#stack" class="hover:text-indigo-600">Skills</a>
+                    <a href="#experience" class="hover:text-indigo-600">Experience</a>
+                    <a href="#projects" class="hover:text-indigo-600">Work</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <p class="opacity-30 mb-2">Connect</p>
+                    <a href="mailto:abhisheksingh9709844475@gmail.com">Email</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto mt-20 pt-12 border-t-4 border-black dark:border-white/10 flex flex-col sm:flex-row justify-between items-center gap-8 opacity-40">
+            <p class="text-[9px] font-black uppercase tracking-[0.3em]">Digital Portfolio &copy; 2024 Abhishek Kumar</p>
+            <p class="text-[9px] font-black uppercase tracking-[0.3em]">Built with Flutter Spirit & Tailwind Efficiency</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lucide Icons Initialization
+        lucide.createIcons();
+
+        // Theme Management
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Apply Theme on Load
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        
+        // Custom Smooth Scroll Observer (Optional depth)
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
